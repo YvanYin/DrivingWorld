@@ -80,42 +80,4 @@ def apply_1d_rotary_emb(
 
 
 
-if __name__ == "__main__":
-
-    dim = 512  
-    batch_size = 3
-    head = 12
-    scales = [1,2,3,4,5,6,8,10,13,16]  
-    freqs_cis_my = [compute_axial_cis(dim = 512, end_x = scale, end_y = scale, theta = 100.0) for scale in scales]  
-    print('freq shapes, ', [freq.shape for freq in freqs_cis_my])
-    q_B_scale2_d = torch.randn([batch_size, head, sum([x**2 for x in scales]), dim])  
-    k_B_scale2_d = torch.randn([batch_size, head, sum([x**2 for x in scales]), dim])  
-    print('q shape after qkv proj and view to multi head', q_B_scale2_d.shape)
-
-
-    cumulative_sums = [0]
-    for scale in scales:
-        cumulative_sums.append(cumulative_sums[-1] + scale**2)  
-
-
-    q_out_list = []
-    k_out_list = []
-    for idx in range(len(scales)):
-        start = cumulative_sums[idx]
-        end = cumulative_sums[idx + 1]
-        q = q_B_scale2_d[:, :, start:end, :] 
-        k = k_B_scale2_d[:, :, start:end, :] 
-        q_out, k_out = apply_rotary_emb(q, k, freqs_cis=freqs_cis_my[idx])
-        q_out_list.append(q_out)
-        k_out_list.append(k_out)
-
-    q_out = torch.cat(q_out_list, 2)
-    k_out = torch.cat(k_out_list, 2)
-
-    print('q shape after apply rope', q_out.shape)
-
-
-
-
-
 
