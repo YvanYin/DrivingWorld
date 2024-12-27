@@ -2,6 +2,7 @@
 ## [HomePage](https://huxiaotaostasy.github.io/DrivingWorld/index.html) | [arXiv]()
 This project is the implementation of our paper: [DrivingWorld: Constructing World Model for Autonomous Driving via Video GPT](). We proposed an auto-regressive world model for autonomous driving.
 
+
 ![Teaser](./images/teaser.png)
 
 ## Usage
