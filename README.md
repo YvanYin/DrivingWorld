@@ -36,8 +36,11 @@ You can change the setting with config file in \<configs/\>
 We sincerely recommend some related papers:
 
 [NeurIPS 2024] [A Generalizable World Model for Autonomous Driving](https://github.com/OpenDriveLab/Vista)
+
 [CVPR 2024 Highlight] [GenAD: Generalized Predictive Model for Autonomous Driving & Foundation Models in Autonomous System](https://github.com/OpenDriveLab/DriveAGI)
+
 [GAIA-1: A Generative World Model for Autonomous Driving](https://arxiv.org/abs/2309.17080)
+
 
 ## Reference
 We thank for [VQGAN](https://github.com/CompVis/taming-transformers), [LlamaGen](https://github.com/FoundationVision/LlamaGen) and [LLlama 3.1](https://github.com/meta-llama/llama3) for their codebase.
