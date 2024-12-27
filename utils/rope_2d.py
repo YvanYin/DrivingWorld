@@ -1,5 +1,4 @@
 import torch
-from typing import Tuple
 
 def init_t_xy(end_x, end_y):
     t = torch.arange(end_x * end_y, dtype=torch.float32)
