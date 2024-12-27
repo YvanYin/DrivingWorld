@@ -12,9 +12,9 @@ def top_k_sampling(logits, top_k=30, temperature_k=1.0):
     logits_topk = logits / temperature_k
     v, _ = torch.topk(logits, min(top_k, logits_topk.size(-1)))
     logits_topk[logits_topk < v[:, :, [-1]]] = -float('Inf')
-
+    # apply softmax to convert logits to (normalized) probabilities
     probs = F.softmax(logits_topk, dim=-1)
-
+    # sample from the distribution
     idx_next = torch.multinomial(probs[:, 0, :], num_samples=1)
     return idx_next
 
@@ -30,9 +30,9 @@ def top_p_sampling(logits, top_p=0.9, temperature_p=1.0, filter_value=-float('In
     sorted_logits, sorted_indices = torch.sort(logits_top_p, descending=True)
     cumulative_probs = torch.cumsum(F.softmax(sorted_logits, dim=-1), dim=-1)
 
-
+    # Remove tokens with cumulative probability above the threshold
     sorted_indices_to_remove = cumulative_probs > top_p
-
+    # Shift the indices to the right to keep also the first token above the threshold
     sorted_indices_to_remove[..., 1:] = sorted_indices_to_remove[..., :-1].clone()
     sorted_indices_to_remove[..., 0] = 0
     
@@ -49,7 +49,7 @@ def pk_sampling(logits, top_k=30, temperature_k=1.0, top_p=0.9, temperature_p=1.
     logits_topk = logits / temperature_k
     v, _ = torch.topk(logits, min(top_k, logits_topk.size(-1)))
     logits_topk[logits_topk < v[:, :, [-1]]] = -float('Inf')
-
+    # apply softmax to convert logits to (normalized) probabilities
     logits = F.softmax(logits_topk, dim=-1)
     
     B, _, N = logits.shape
@@ -57,9 +57,9 @@ def pk_sampling(logits, top_k=30, temperature_k=1.0, top_p=0.9, temperature_p=1.
     sorted_logits, sorted_indices = torch.sort(logits_top_p, descending=True)
     cumulative_probs = torch.cumsum(F.softmax(sorted_logits, dim=-1), dim=-1)
 
-
+    # Remove tokens with cumulative probability above the threshold
     sorted_indices_to_remove = cumulative_probs > top_p
-
+    # Shift the indices to the right to keep also the first token above the threshold
     sorted_indices_to_remove[..., 1:] = sorted_indices_to_remove[..., :-1].clone()
     sorted_indices_to_remove[..., 0] = 0
     
@@ -70,12 +70,3 @@ def pk_sampling(logits, top_k=30, temperature_k=1.0, top_p=0.9, temperature_p=1.
     probabilities = F.softmax(logits_top_p, dim=-1)
     idx_next = torch.multinomial(probabilities, 1)
     return idx_next
-
-
-
-if __name__ == '__main__':
-    logits = torch.rand((1, 1, 16384), dtype=torch.float)
-    idx = top_p_sampling(logits)
-    idx_k = top_k_sampling(logits)
-    idx_pk = pk_sampling(logits)
-    print(idx, idx_k, idx_pk)

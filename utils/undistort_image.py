@@ -14,36 +14,30 @@ def get_undistort_map(
                             [0, fy, cy],
                             [0, 0, 1]])
 
-    dist_coeffs = np.array([k1, k2, p1, p2, k3])  
+    dist_coeffs = np.array([k1, k2, p1, p2, k3])  # Depending on the distortion model used, this array might have fewer or more values.
     Args:
         cam_in: camera intrinsic parameters, [fx, fy, cx, cy]
         cam_dist_coeffs: camera distortion parameters, [k1, k2, p1, p2, k3]
     
     """
-
+    # Get the dimensions of the image
     h, w = img_shape
     camera_matrix = np.array(cam_in)
     dist_coeffs = np.array(cam_dist_coeffs)
 
+    # Get the optimal new camera matrix
     new_camera_matrix, roi = cv2.getOptimalNewCameraMatrix(camera_matrix, dist_coeffs, (w, h), 1, (w, h))
 
+    # # Undistort the image
+    # undistorted_img = cv2.undistort(img, camera_matrix, dist_coeffs, None, new_camera_matrix)
+
+    # Map coordinates from new camera matrix to distorted image using initUndistortRectifyMap which inversely remaps for distortion
     map1, map2 = cv2.initUndistortRectifyMap(camera_matrix, dist_coeffs, None, new_camera_matrix, (w, h), 5)
     return [map1, map2, roi]
 
 def undistort_image(img, map1, map2, roi):
-
+    # Reversely apply maps to simulate distortion
     undistorted_img = cv2.remap(img, map1, map2, interpolation=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT)
     x, y, w, h = roi
     undistorted_img_crop = undistorted_img[y:y+h, x:x+w]
     return undistorted_img, undistorted_img_crop
-
-
-if __name__ == '__main__':
-    img_path = '/horizon-bucket/saturn_v_release/005_perception_static/03_hde_data/driving_auto/v163/FSD_Site_DZ878_20240622/Site_114_32953_22_67792_0/DZ878_20240622_020406/camera_front/1718993635400.jpg'
-    test_img = cv2.imread(img_path)
-    map_roi = get_undistort_map(test_img.shape[:2])
-    undistorted_img, undistorted_img_crop = undistort_image(test_img, map_roi[0], map_roi[1], map_roi[2])
-    cv2.imwrite('test_crop.jpg', undistorted_img_crop)
-    cv2.imwrite('test.jpg', undistorted_img)
-
-    cv2.imwrite('test_ori.jpg', test_img)

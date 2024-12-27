@@ -38,22 +38,22 @@ def get_timestep_embedding(
     emb = torch.exp(exponent)
     emb = timesteps[:, None].float() * emb[None, :]
 
-
+    # scale embeddings
     emb = scale * emb
 
-
+    # concat sine and cosine embeddings
     emb = torch.cat([torch.sin(emb), torch.cos(emb)], dim=-1)
 
-
+    # flip sine and cosine embeddings
     if flip_sin_to_cos:
         emb = torch.cat([emb[:, half_dim:], emb[:, :half_dim]], dim=-1)
 
-
+    # zero pad
     if embedding_dim % 2 == 1:
         emb = torch.nn.functional.pad(emb, (0, 1, 0, 0))
     return emb
 
-def get_fourier_embeds_from_coordinates(embed_dim, coordinates, max_period: int = 10000,):
+def get_fourier_embeds_from_coordinates(embed_dim, coordinates, max_period: int = 100,):
     """
     Args:
         embed_dim: int
@@ -67,11 +67,3 @@ def get_fourier_embeds_from_coordinates(embed_dim, coordinates, max_period: int 
     emb = emb[None, None, None, :] * coordinates[:, :, :, None]
     emb = torch.cat([torch.sin(emb), torch.cos(emb)], dim=-1)
     return emb
-
-if __name__ == '__main__':
-    coordinates = torch.rand((1, 2, 3))
-    emb = get_fourier_embeds_from_coordinates(6, coordinates)
-    a, b, c = torch.split(emb, dim=2, split_size_or_sections=1)
-    print(emb)
-    print(emb.shape)
-    print(a.shape)

@@ -22,6 +22,34 @@ def save_model(self, path, epoch, rank=0):
         save
         torch.save(self.model.state_dict(),'{}/tvar_{}.pkl'.format(path, str(epoch)))  
 
+# def load_ckpt(load_path, model, optimizer=None, scheduler=None, strict_match=True, loss_scaler=None):
+#     """
+#     Load the check point for resuming training or finetuning.
+#     """
+#     if os.path.isfile(load_path):
+#         if main_process():
+#             logger.info(f"Loading weight '{load_path}'")
+#         checkpoint = torch.load(load_path, map_location="cpu")
+#         ckpt_state_dict  = checkpoint['model_state_dict']
+#         model.module.load_state_dict(ckpt_state_dict, strict=strict_match)
+
+#         if optimizer is not None:
+#             optimizer.load_state_dict(checkpoint['optimizer'])
+#         if scheduler is not None:
+#             scheduler.load_state_dict(checkpoint['scheduler'])
+#         if loss_scaler is not None and 'scaler' in checkpoint:
+#             scheduler.load_state_dict(checkpoint['scaler'])
+#         del ckpt_state_dict
+#         del checkpoint
+#         if main_process():
+#             logger.info(f"Successfully loaded weight: '{load_path}'")
+#             if scheduler is not None and optimizer is not None:
+#                 logger.info(f"Resume training from: '{load_path}'")
+#     else:
+#         if main_process():
+#             raise RuntimeError(f"No weight found at '{load_path}'")
+#     return model, optimizer, scheduler, loss_scaler
+
 
 def save_ckpt(args, path, model, optimizer=None, scheduler=None, curr_iter=0, curr_epoch=None):
     """
@@ -31,7 +59,7 @@ def save_ckpt(args, path, model, optimizer=None, scheduler=None, curr_iter=0, cu
     ckpt = dict(
         model_state_dict=model.state_dict(),
         optimizer_state_dict=optimizer.state_dict(),
-
+        # scheduler=scheduler.state_dict(),
     )
     
     ckpt_path = '{}/tvar_{}.pkl'.format(path, str(curr_iter))
@@ -51,12 +79,12 @@ def resume_ckpt(local_rank, args, model, optimizer=None):
             optimizer.load_state_dict(ckpt_file['optimizer_state_dict'])
         print(local_rank, f'Rank: {local_rank}, Successfully loaded optimizer from {resume_load_path}.')
     if 'model_state_dict' in ckpt_file:
-
-
+        # print('loaded weight, model.pose_emb.weight sum:', torch.sum(ckpt_file['model_state_dict']['pose_emb.weight']))
+        # model.load_state_dict(ckpt_file['model_state_dict'], strict=True)
         model = load_parameters(model, ckpt_file)
         print(local_rank, f'Rank: {local_rank}, Successfully loaded model from {resume_load_path}.')
     else:
-
+        # model.load_state_dict(ckpt_file, strict=False)
         model = load_parameters(model, ckpt_file)
         print(local_rank, f'Rank: {local_rank}, Successfully loaded model from {resume_load_path}.')
     return model, optimizer
@@ -74,7 +102,7 @@ def load_parameters(model, load_ckpt_file):
             ckpt_state_dict[key] = val
         elif key not in model.state_dict():
             print(f"!!!! {key} not exists in model.")
-
+            # ckpt_state_dict[key] = val
             continue
         elif val.shape != model.state_dict()[key].shape:
             print(f"!!!! Shape of ckpt's {key} is {val.shape}, but model's shape is {model.state_dict()[key].shape}")
@@ -115,8 +143,8 @@ def save_ckpt_deepspeed(args, path, model, optimizer=None, scheduler=None, curr_
     os.makedirs(path, exist_ok=True)
     ckpt_path = path
     print(f'#### Deepspeed, Save model to {ckpt_path}')
-    model.save_checkpoint(os.path.abspath(ckpt_path), curr_iter, client_sd, save_latest=True) 
-
+    model.save_checkpoint(os.path.abspath(ckpt_path), curr_iter, client_sd, save_latest=True) #
+    # print(f'#### Save model: {ckpt_path}')
 
 
 def load_from_deepspeed_ckpt(args, model):
@@ -130,7 +158,7 @@ def load_from_deepspeed_ckpt(args, model):
             resume_raw_dir = os.path.dirname(args.load_from_deepspeed) 
             load_path, client_sd = model.load_checkpoint(resume_raw_dir, tag, load_module_strict=False, load_module_only=True)
         print('#### After deepspeed load ckpt, img_projector.0.weight sum:', torch.sum(model.model.state_dict()['img_projector.0.weight']))
-    if args.resume_step > 0: 
+    if args.resume_step > 0: # args.resume_from_deepspeed is not None:
         print('#### Before deepspeed resume ckpt, img_projector.0.weight sum:', torch.sum(model.model.state_dict()['img_projector.0.weight']))
         resume_load_path = '{}/{}'.format(args.save_model_path, str(args.resume_step))
         load_path, client_sd = model.load_checkpoint(resume_load_path)
@@ -138,9 +166,9 @@ def load_from_deepspeed_ckpt(args, model):
             if resume_load_path.endswith("/"):
                 resume_load_path = resume_load_path[:-1]
             tag = os.path.split(resume_load_path)[-1]
-           
+            # resume_raw_dir = os.path.split(args.resume_from_deepspeed)[0]
             load_path, client_sd = model.load_checkpoint(args.save_model_path, tag)
-        
+        # args.resume_step = client_sd['curr_iter']
         print('#### After deepspeed resume, img_projector.0.weight sum:', torch.sum(model.model.state_dict()['img_projector.0.weight']))
     return model
 
@@ -152,8 +180,8 @@ def log_dict_args(dict_args):
     Args:
         dict_args (dict): The dictionary of arguments to be logged.
     """
-
+    # Convert the dictionary to a JSON string
     json_args = json.dumps(dict_args, indent=4)
     
-
+    # Log the JSON string
     logging.info(f"Arguments: {json_args}")

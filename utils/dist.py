@@ -27,12 +27,12 @@ def initialize(fork=False, backend='nccl', gpu_id_if_not_distibuted=0, timeout=3
         __device = torch.empty(1).cuda().device
         print(f'[dist initialize] env variable "RANK" is not set, use {__device} as the device', file=sys.stderr)
         return
-
+    # then 'RANK' must exist
     global_rank, num_gpus = int(os.environ['RANK']), torch.cuda.device_count()
     local_rank = global_rank % num_gpus
     torch.cuda.set_device(local_rank)
     
-
+    # ref: https://github.com/open-mmlab/mmcv/blob/master/mmcv/runner/dist_utils.py#L29
     if mp.get_start_method(allow_none=True) is None:
         method = 'fork' if fork else 'spawn'
         print(f'[dist initialize] mp method={method}')
@@ -202,7 +202,7 @@ def for_visualize(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         if is_visualizer():
-
+            # with torch.no_grad():
             ret = func(*args, **kwargs)
         else:
             ret = None
