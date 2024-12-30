@@ -51,6 +51,21 @@ We sincerely recommend some related papers:
 
 [GAIA-1: A Generative World Model for Autonomous Driving](https://arxiv.org/abs/2309.17080)
 
+## 📌 Citation
+
+If the paper and code from `DrivingWorld` help your research, we kindly ask you to give a citation to our paper ❤️. Additionally, if you appreciate our work and find this repository useful, giving it a star ⭐️ would be a wonderful way to support our work. Thank you very much.
+
+```bibtex
+@inproceedings{
+
+}
+```
 
 ## Reference
 We thank for [VQGAN](https://github.com/CompVis/taming-transformers), [LlamaGen](https://github.com/FoundationVision/LlamaGen) and [LLlama 3.1](https://github.com/meta-llama/llama3) for their codebase.
+
+
+
+## License
+
+This repository is under the MIT License. For more license questions, please contact Wei Yin (yvanwy@outlook.com) and Xiaotao Hu (1979005820hux@gmail.com).
