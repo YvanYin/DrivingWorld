@@ -6,7 +6,7 @@ This project is the implementation of our paper: [DrivingWorld: Constructing Wor
 ![Teaser](./images/teaser.png)
 
 ## News
-[12.30] Release inference code and demos.
+[12.30] Release the project.
 
 ## TODO LIST
 - [ ] More demos
