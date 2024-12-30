@@ -9,10 +9,10 @@ This project is the implementation of our paper: [DrivingWorld: Constructing Wor
 [12.30] Release inference code and demos.
 
 ## TODO LIST
-- [] More demos
-- [] Complete evaluation code
-- [] Video Preprocess Code
-- [] Training code
+- [ ] More demos
+- [ ] Complete evaluation code
+- [ ] Video Preprocess Code
+- [ ] Training code
 
 ## Usage
 ### Installation
