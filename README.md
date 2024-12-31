@@ -9,6 +9,7 @@ This project is the implementation of our paper: [DrivingWorld: Constructing Wor
 [12.30] Release the project.
 
 ## TODO LIST
+- [ ] HuggingFace demos.
 - [ ] More demos
 - [ ] Complete evaluation code
 - [ ] Video Preprocess Code
