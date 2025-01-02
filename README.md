@@ -57,8 +57,11 @@ We sincerely recommend some related papers:
 If the paper and code from `DrivingWorld` help your research, we kindly ask you to give a citation to our paper ❤️. Additionally, if you appreciate our work and find this repository useful, giving it a star ⭐️ would be a wonderful way to support our work. Thank you very much.
 
 ```bibtex
-@inproceedings{
-
+@article{hu2024drivingworld,
+  title={DrivingWorld: Constructing World Model for Autonomous Driving via Video GPT},
+  author={Hu, Xiaotao and Yin, Wei and Jia, Mingkai and Deng, Junyuan and Guo, Xiaoyang and Zhang, Qian and Long, Xiaoxiao and Tan, Ping},
+  journal={arXiv preprint arXiv:2412.19505},
+  year={2024}
 }
 ```
 
