@@ -72,4 +72,4 @@ We thank for [VQGAN](https://github.com/CompVis/taming-transformers), [LlamaGen]
 
 ## License
 
-This repository is under the MIT License. For more license questions, please contact Wei Yin (yvanwy@outlook.com) and Xiaotao Hu (1979005820hux@gmail.com).
+This repository is under the MIT License. For more license questions, please contact Wei Yin (yvanwy@outlook.com) and Xiaotao Hu (xiaotao.hu@connect.ust.hk).
