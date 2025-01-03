@@ -1,7 +1,8 @@
 # DrivingWorld: Constructing World Model for Autonomous Driving via Video GPT
-## [HomePage](https://huxiaotaostasy.github.io/DrivingWorld/index.html) | [arXiv](https://arxiv.org/abs/2412.19505)
+## [Homepage](https://huxiaotaostasy.github.io/DrivingWorld/index.html) | [arXiv](https://arxiv.org/abs/2412.19505) | [Youtube Demos](https://youtu.be/5QJRAxnjX0k)
 This project is the implementation of our paper: [DrivingWorld: Constructing World Model for Autonomous Driving via Video GPT](https://arxiv.org/abs/2412.19505). We proposed an auto-regressive world model for autonomous driving.
 
+**Here we provide a compressed GIF. For better results, please refer to the [YouTube demos](https://youtu.be/5QJRAxnjX0k).**
 ![gif](https://raw.githubusercontent.com/huxiaotaostasy/huxiaotaostasy.github.io/main/DrivingWorld/videos/video_github.gif)
 
 ![Teaser](./images/teaser.png)
