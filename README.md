@@ -1,25 +1,52 @@
-# DrivingWorld: Constructing World Model for Autonomous Driving via Video GPT
-## [Homepage](https://huxiaotaostasy.github.io/DrivingWorld/index.html) | [arXiv](https://arxiv.org/abs/2412.19505) | [Youtube Demos](https://youtu.be/5QJRAxnjX0k)
-This project is the implementation of our paper: [DrivingWorld: Constructing World Model for Autonomous Driving via Video GPT](https://arxiv.org/abs/2412.19505). We proposed an auto-regressive world model for autonomous driving.
+<div align="center">
 
-![Teaser](./images/teaser.png)
+<h1>DrivingWorld: Constructing World Model for Autonomous Driving via Video GPT</h1>
 
-**Here we provide a compressed GIF. For better results, please refer to the [YouTube demos](https://youtu.be/5QJRAxnjX0k).**
+<p align="center">
+<a href="https://arxiv.org/abs/2412.19505"><img src="https://img.shields.io/badge/ArXiv-2412.19505-%23840707.svg" alt="ArXiv"></a>
+<a href="https://youtu.be/5QJRAxnjX0k"><img src="https://img.shields.io/badge/Youtube Demo-Video-%26840707.svg" alt="VideoDemo"></a>
+<a href="https://huxiaotaostasy.github.io/DrivingWorld/index.html"><img src="https://img.shields.io/badge/Webpage-DrivingWorld-%237CB4F7.svg" alt="Webpage"></a>
+</p>
 
-![gif](https://raw.githubusercontent.com/huxiaotaostasy/huxiaotaostasy.github.io/main/DrivingWorld/videos/video_github.gif)
+[Xiaotao Hu](https://huxiaotaostasy.github.io/)<sup>1,2*</sup>, [Wei Yin](https://yvanyin.net/)<sup>2*§</sup>, [Mingkai Jia](https://scholar.google.com/citations?user=fcpTdvcAAAAJ&hl=zh-CN)<sup>1,2</sup>, [Junyuan Deng](https://scholar.google.com/citations?user=KTCPC5IAAAAJ&hl=en)<sup>1,2</sup>, [Xiaoyang Guo](https://xy-guo.github.io/)<sup>2</sup><br>
+[Qian Zhang](https://scholar.google.com.hk/citations?hl=zh-CN&user=pCY-bikAAAAJ)<sup>2</sup>, [Xiaoxiao Long](https://www.xxlong.site/)<sup>1†</sup>, [Ping Tan](https://scholar.google.com/citations?user=XhyKVFMAAAAJ&hl=en)<sup>1</sup><br>
 
+[HKUST](https://hkust.edu.hk/)<sup>1</sup>, [Horizon Robotics](https://en.horizon.auto/)<sup>2</sup><br>
+<sup>*</sup> Equal Contribution, <sup>†</sup> Corresponding Author, <sup>§</sup> Project Leader
+<br><br><image src="./images/teaser.png"/>
+</div>
 
-## News
-[12.30] Release the project.
+We present **DrivingWorld** (World Model for Autonomous Driving), a model that enables autoregressive video and ego state generation with high efficiency. **DrivingWorld** formulates the future state prediction (ego state and visions) as an next-state autoregressive prediction. **DrivingWorld** enables generate over 40s videos.
 
-## TODO LIST
-- [ ] HuggingFace demos.
+## 🚀News
+
+- ```[Dec 2024]``` Released [paper](https://arxiv.org/abs/2412.19505), inference codes, and Quick Start guide.
+
+## 🔨 TODO LIST
+
+- [ ] Hugging face demos
 - [ ] More demos
 - [ ] Complete evaluation code
 - [ ] Video Preprocess Code
 - [ ] Training code
 
-## Usage
+
+## ✨Hightlights
+
+- 🔥 **Novel Approach**: GPT-style video and ego state generation.
+- 🔥 **State-of-the-art Performance**:  and long-duration driving-scene video results.
+- 🔥 **Controlable Generation**: High-fidelity controllable generation with ego poses.
+
+## 🗄️Demos
+
+<a id="demo"></a>
+![gif](https://raw.githubusercontent.com/huxiaotaostasy/huxiaotaostasy.github.io/main/DrivingWorld/videos/video_github.gif)
+
+
+
+## 🔑 Quick Start
+<a id="quick start"></a>
+
 ### Installation
 
 ```bash
@@ -47,14 +74,7 @@ sh demo_test_change_road.sh
 ```
 You can change the setting with config file in \<configs/\>
 
-## Recommend
-We sincerely recommend some related papers:
 
-[NeurIPS 2024] [A Generalizable World Model for Autonomous Driving](https://github.com/OpenDriveLab/Vista)
-
-[CVPR 2024 Highlight] [GenAD: Generalized Predictive Model for Autonomous Driving & Foundation Models in Autonomous System](https://github.com/OpenDriveLab/DriveAGI)
-
-[GAIA-1: A Generative World Model for Autonomous Driving](https://arxiv.org/abs/2309.17080)
 
 ## 📌 Citation
 
@@ -77,3 +97,4 @@ We thank for [VQGAN](https://github.com/CompVis/taming-transformers), [LlamaGen]
 ## License
 
 This repository is under the MIT License. For more license questions, please contact Wei Yin (yvanwy@outlook.com) and Xiaotao Hu (xiaotao.hu@connect.ust.hk).
+
