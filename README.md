@@ -39,7 +39,9 @@ We present **DrivingWorld** (World Model for Autonomous Driving), a model that e
 ## 🗄️Demos
 - 🔥 Controllable generation with provided ego poses.
 <a id="demo"></a>
+
 <image src="./images/teaser.png"/>
+
 ![gif](https://raw.githubusercontent.com/huxiaotaostasy/huxiaotaostasy.github.io/main/DrivingWorld/videos/video_github.gif)
 
 ## 🙊 Model Zoo
