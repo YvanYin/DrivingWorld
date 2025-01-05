@@ -13,21 +13,20 @@
 
 [HKUST](https://hkust.edu.hk/)<sup>1</sup>, [Horizon Robotics](https://en.horizon.auto/)<sup>2</sup><br>
 <sup>*</sup> Equal Contribution, <sup>†</sup> Corresponding Author, <sup>§</sup> Project Leader
-<br><br><image src="./images/teaser.png"/>
+<br><br><image src="./images/pipeline.png"/>
 </div>
 
-We present **DrivingWorld** (World Model for Autonomous Driving), a model that enables autoregressive video and ego state generation with high efficiency. **DrivingWorld** formulates the future state prediction (ego state and visions) as an next-state autoregressive prediction. **DrivingWorld** enables generate over 40s videos.
+We present **DrivingWorld** (World Model for Autonomous Driving), a model that enables autoregressive video and ego state generation with high efficiency. **DrivingWorld** formulates the future state prediction (ego state and visions) as a next-state autoregressive style. Our **DrivingWorld** is able to predict over 40s videos and achieves high-fidelity controllable generation.
 
 ## 🚀News
 
-- ```[Dec 2024]``` Released [paper](https://arxiv.org/abs/2412.19505), inference codes, and Quick Start guide.
+- ```[Dec 2024]``` Released [paper](https://arxiv.org/abs/2412.19505), inference codes, and quick start guide.
 
 ## 🔨 TODO LIST
 
 - [ ] Hugging face demos
-- [ ] More demos
 - [ ] Complete evaluation code
-- [ ] Video Preprocess Code
+- [ ] Video preprocess code
 - [ ] Training code
 
 
@@ -38,14 +37,18 @@ We present **DrivingWorld** (World Model for Autonomous Driving), a model that e
 - 🔥 **Controlable Generation**: High-fidelity controllable generation with ego poses.
 
 ## 🗄️Demos
-
+- 🔥 Controllable generation with provided ego poses.
 <a id="demo"></a>
+<image src="./images/teaser.png"/>
 ![gif](https://raw.githubusercontent.com/huxiaotaostasy/huxiaotaostasy.github.io/main/DrivingWorld/videos/video_github.gif)
+
+## 🙊 Model Zoo
 
 
 
 ## 🔑 Quick Start
 <a id="quick start"></a>
+
 
 ### Installation
 
