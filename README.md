@@ -68,18 +68,54 @@ We download `nuPlan Val Split` in [NuPlan](https://nuplan.org/). And we follow [
 
 We share the `json` files in [Hugging Face](https://huggingface.co/huxiaotaostasy/DrivingWorld/tree/main).
 
+### Demo Data Preparation
+In this section, we will explain how to compose our demo data and your own data. For our demo data, please directly download from [here]().
 
-### Evaluation 
-Script for the default setting (conditioned on 15 frames, on Nuplan Validation set, adopt topk sampling):
-```bash
-cd tools
-sh demo_test_long_term_nuplan.sh
-sh demo_test_long_term_youtube.sh
-sh demo_test_change_road.sh
+The final data folder `DrivingWorld/data/` should be organized like this:
+
 ```
-You can change the setting with config file in \<configs/\>
+data
+├── video-1
+│   ├── 000000.png
+│   ├── 000001.png
+│   ├── ...
+│   ├── 000015.png
+│   ├── pose_x_y.npy
+│   └── yaw.npy
+├── video-2
+│   ├── 000000.png
+│   ├── 000001.png
+│   ├── ...
+│   ├── 000015.png
+│   ├── pose_x_y.npy
+│   └── yaw.npy
+├── ...
+├── video-n
+│   ├── 000000.png
+│   ├── 000001.png
+│   ├── ...
+│   ├── 000015.png
+│   ├── pose_x_y.npy
+│   └── yaw.npy
+```
 
+### Change Road Demo
 
+Script for the default setting (conditioned on 15 frames, on demo videos, adopt topk sampling):
+```bash
+python3 tools/test_change_road_demo.py --config "configs/drivingworld_v1/gen_videovq_conf_demo.py" --exp_name "demo_dest_change_road" --load_path "./pretrained_models/world_model.pth" --save_video_path "./outputs/change_road"
+```
+
+### Long-term Demo
+
+Script for the default setting (conditioned on 15 frames, on demo videos, adopt topk sampling):
+```bash
+python3 tools/test_long_term_demo.py --config "configs/drivingworld_v1/gen_videovq_conf_demo.py" --exp_name "demo_test_long_term" --load_path "./pretrained_models/world_model.pth" --save_video_path "./outputs/long_term"
+```
+
+### Personalized Generation
+
+For all kinds of generation, you can change the conditional yaws and poses in the code yourself to get different outputs, and you can also modify the sampling parameters in the config files according to your needs.
 
 ## 📌 Citation
 

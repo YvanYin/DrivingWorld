@@ -1,9 +1,8 @@
-import argparse
 import torch
 import torch.nn as nn
 import torch.nn.functional
-import argparse
 from einops import rearrange
+
 from modules.tokenizers.vq_model import VQ_models
 
 class Tokenizer(nn.Module):
