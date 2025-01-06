@@ -69,7 +69,7 @@ We download `nuPlan Val Split` in [NuPlan](https://nuplan.org/). And we follow [
 We share the `json` files in [Hugging Face](https://huggingface.co/huxiaotaostasy/DrivingWorld/tree/main).
 
 ### Demo Data Preparation
-In this section, we will explain how to compose our demo data and your own data. For our demo data, please directly download from [here]().
+In this section, we will explain how to compose our demo data and your own data. For our demo data, please directly download from [here](https://drive.google.com/file/d/1huXLW7RDYY5qXRmHIaeK6laKuSkjOQKF/view?usp=drive_link).
 
 The final data folder `DrivingWorld/data/` should be organized like this:
 
