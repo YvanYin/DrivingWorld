@@ -103,14 +103,22 @@ data
 
 Script for the default setting (conditioned on 15 frames, on demo videos, adopt topk sampling):
 ```bash
-python3 tools/test_change_road_demo.py --config "configs/drivingworld_v1/gen_videovq_conf_demo.py" --exp_name "demo_dest_change_road" --load_path "./pretrained_models/world_model.pth" --save_video_path "./outputs/change_road"
+python3 tools/test_change_road_demo.py \
+--config "configs/drivingworld_v1/gen_videovq_conf_demo.py" \
+--exp_name "demo_dest_change_road" \
+--load_path "./pretrained_models/world_model.pth" \
+--save_video_path "./outputs/change_road"
 ```
 
 ### Long-term Demo
 
 Script for the default setting (conditioned on 15 frames, on demo videos, adopt topk sampling):
 ```bash
-python3 tools/test_long_term_demo.py --config "configs/drivingworld_v1/gen_videovq_conf_demo.py" --exp_name "demo_test_long_term" --load_path "./pretrained_models/world_model.pth" --save_video_path "./outputs/long_term"
+python3 tools/test_long_term_demo.py \
+--config "configs/drivingworld_v1/gen_videovq_conf_demo.py" \ 
+--exp_name "demo_test_long_term" \
+--load_path "./pretrained_models/world_model.pth" \
+--save_video_path "./outputs/long_term"
 ```
 
 ### Personalized Generation
