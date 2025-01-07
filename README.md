@@ -25,7 +25,7 @@ We present **DrivingWorld** (World Model for Autonomous Driving), a model that e
 ## 🔨 TODO LIST
 
 - [ ] Hugging face demos
-- [ ] Complete evaluation code
+- [x] Complete evaluation code
 - [ ] Video preprocess code
 - [ ] Training code
 
