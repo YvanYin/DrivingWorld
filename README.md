@@ -65,42 +65,9 @@ pip3 install -r requirements.txt
 * Download the pretrained models from [Hugging Face](https://huggingface.co/huxiaotaostasy/DrivingWorld/tree/main), and move the pretrained parameters to `DrivingWorld/pretrained_models/*`
 
 ### Data Preparation
-For the public dataset, we use [NuPlan](https://nuplan.org/) and [OpenDV-YouTube](https://github.com/OpenDriveLab/DriveAGI?tab=readme-ov-file#opendv) for testing.
 
-We download `nuPlan Val Split` in [NuPlan](https://nuplan.org/). And we follow [OpenDV-YouTube](https://github.com/OpenDriveLab/DriveAGI/blob/main/opendv/README.md) to get the validation set.
+For data preparation, please refer to [video_data_preprocess.md](./video_data_preprocess//video_data_preprocess.md) for more details.
 
-We share the `json` files in [Hugging Face](https://huggingface.co/huxiaotaostasy/DrivingWorld/tree/main).
-
-### Demo Data Preparation
-In this section, we will explain how to compose our demo data and your own data. For our demo data, please directly download from [here](https://drive.google.com/file/d/1jJeBQKqRfy81aEPH4fSPxib0rM0m8rKQ/view?usp=drive_link).
-
-The final data folder `DrivingWorld/data/` should be organized like this:
-
-```
-data
-├── video-1
-│   ├── 000000.png
-│   ├── 000001.png
-│   ├── ...
-│   ├── 000015.png
-│   ├── pose_x_y.npy
-│   └── yaw.npy
-├── video-2
-│   ├── 000000.png
-│   ├── 000001.png
-│   ├── ...
-│   ├── 000015.png
-│   ├── pose_x_y.npy
-│   └── yaw.npy
-├── ...
-├── video-n
-│   ├── 000000.png
-│   ├── 000001.png
-│   ├── ...
-│   ├── 000015.png
-│   ├── pose_x_y.npy
-│   └── yaw.npy
-```
 
 ### Change Road Demo
 

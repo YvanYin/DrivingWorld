@@ -25,7 +25,7 @@ def add_arguments():
     parser.add_argument('--resume_path', default=None, type=str, help='continue to train, model path')
     parser.add_argument('--resume_iter', default=0, type=int, help='continue to train, iter')
     parser.add_argument('--load_path', default=None, type=str, help='pretrained path')
-    parser.add_argument("--config", type=str, default='configs/drivingworld_v1/gen_vq_conf.py', required=True, help="configs for training")
+    parser.add_argument("--config", type=str, required=True, help="configs for training")
     parser.add_argument('--exp_name', type=str, required=True)
     parser.add_argument('--save_video_path', type=str, required=True)
     

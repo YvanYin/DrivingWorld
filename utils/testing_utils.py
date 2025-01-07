@@ -96,20 +96,14 @@ def set_text(image, pose):
     # pose: string
     number = pose
     image = np.ascontiguousarray(image, dtype=np.uint8)
-
     height, width, _ = image.shape
-
     font = cv2.FONT_HERSHEY_SIMPLEX
     font_scale = 0.5
     color = (0, 0, 255) 
     thickness = 1
-
     (text_width, text_height), baseline = cv2.getTextSize(number, font, font_scale, thickness)
-
-    x = width - text_width - 10  # 10 是边距
-    y = text_height + 10  # 10 是边距
+    x = width - text_width - 10
+    y = text_height + 10
     print(number)
-
-    # 在图片上写入数字
     image = cv2.putText(image, number, (x, y), font, font_scale, color, thickness)
     return image
