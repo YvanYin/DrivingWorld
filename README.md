@@ -45,7 +45,10 @@ We present **DrivingWorld** (World Model for Autonomous Driving), a model that e
 ![gif](https://raw.githubusercontent.com/huxiaotaostasy/huxiaotaostasy.github.io/main/DrivingWorld/videos/video_github.gif)
 
 ## 🙊 Model Zoo
-
+| Model | Link |
+|---|---|
+|Video VQVAE| [link](https://huggingface.co/huxiaotaostasy/DrivingWorld/blob/main/vqvae.pt) |
+|World Model| [link](https://huggingface.co/huxiaotaostasy/DrivingWorld/blob/main/world_model.pth) |
 
 
 ## 🔑 Quick Start
@@ -69,7 +72,7 @@ We download `nuPlan Val Split` in [NuPlan](https://nuplan.org/). And we follow [
 We share the `json` files in [Hugging Face](https://huggingface.co/huxiaotaostasy/DrivingWorld/tree/main).
 
 ### Demo Data Preparation
-In this section, we will explain how to compose our demo data and your own data. For our demo data, please directly download from [here](https://drive.google.com/file/d/1huXLW7RDYY5qXRmHIaeK6laKuSkjOQKF/view?usp=drive_link).
+In this section, we will explain how to compose our demo data and your own data. For our demo data, please directly download from [here](https://drive.google.com/file/d/1jJeBQKqRfy81aEPH4fSPxib0rM0m8rKQ/view?usp=drive_link).
 
 The final data folder `DrivingWorld/data/` should be organized like this:
 

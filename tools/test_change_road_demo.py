@@ -67,7 +67,7 @@ def test_sliding_window_img(val_data, model, args, tokenizer):
             
             pose = pose_or[:, :condition_frames, :]
             yaw = yaw_or[:, :condition_frames, :]
-            yaw_list = [1]*60 # you can change the conditional yaw here.
+            yaw_list = [1]*10 + [-1]*10 + [0]*10 + [-1]*10 + [1]*10 +[0]*10 # you can change the conditional yaw here.
 
             for t1 in range(len(yaw_list)):
                 print(i, t1)

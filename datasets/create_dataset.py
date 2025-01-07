@@ -9,7 +9,7 @@ def create_test_datasets(args, split='test'):
         if data_name == 'demo':
             dataset = DemoTest(
                     args.datasets_paths['demo_root'], 
-                    condition_frames=args.condition_frames, downsample_fps=args.downsample_fps)
+                    condition_frames=args.condition_frames)
         dataset_list.append(dataset)
     data_array = ConcatDataset(dataset_list)
     return data_array

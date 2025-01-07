@@ -39,10 +39,10 @@ class DemoTest(Dataset):
     
     def getimg(self, index):
         seq_data = self.video_path_list[index]
-        video_path = os.path.join(seq_data, video_path)
+        video_path = os.path.join(self.data_root, seq_data)
         frames = glob.glob(os.path.join(video_path, '*.png'))
-        poses = np.load(os.path.join(video_path, 'pose_x_y.npy'))
-        yaws = np.load(os.path.join(video_path, 'yaw.npy'))
+        poses = np.load(os.path.join(video_path, 'pose.npy'))[0]
+        yaws = np.load(os.path.join(video_path, 'yaw.npy'))[0]
         clip_length = len(frames)
         ims = []
         for i in range(clip_length):   
