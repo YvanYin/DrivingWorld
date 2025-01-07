@@ -10,8 +10,8 @@ from datasets.datasets_utils import get_meta_data
 
 class NuPlanTest(Dataset):
     def __init__(self, data_root, json_root, condition_frames=3, downsample_fps=5, downsample_size=16, h=256, w=512):
-        self.meta_path = f'{json_root}/test_meta_v1.json'
-        self.pose_meta_path = f'{json_root}/test_ego_meta_v1'
+        self.meta_path = f'{json_root}/your_json_here.json' # your json here
+        self.pose_meta_path = f'{json_root}/your_pose_here' # your pose here
         self.condition_frames = condition_frames
         self.data_root = data_root 
         self.ori_fps = 10 
