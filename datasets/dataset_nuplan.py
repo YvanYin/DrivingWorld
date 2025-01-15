@@ -97,7 +97,7 @@ class NuPlanTest(Dataset):
                 im = Image.fromarray(im).resize((self.w, h_1), resample= Image.BICUBIC)
                 im = np.array(im)
             ims.append(im)
-        poses_new.append(self.__loadarray_tum_single(poses_downsample[i]))
+            poses_new.append(self.__loadarray_tum_single(poses_downsample[i]))
         pose_dict = get_meta_data(poses=poses_new)
         return ims, pose_dict['rel_poses'], pose_dict['rel_yaws']
     
